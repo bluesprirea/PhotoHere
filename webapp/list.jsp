@@ -35,7 +35,7 @@
                         </c:if>
                         </c:forEach>
                         <br>
-                        <p>댓글달</p>
+                        <p>댓글달기</p>
                         <textarea rows="1" cols="30" name="attachComment"></textarea>
                         <input type="submit" value="댓글 달기">
                         </form>
