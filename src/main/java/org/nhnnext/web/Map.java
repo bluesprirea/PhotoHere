@@ -18,7 +18,7 @@ public class Map {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@OneToMany(mappedBy = "map", fetch = FetchType.EAGER, cascade=CascadeType.REMOVE)
+	@OneToMany(mappedBy = "map", fetch = FetchType.EAGER)
     private List<Comment> comments;
 	
 	public Long getId() {

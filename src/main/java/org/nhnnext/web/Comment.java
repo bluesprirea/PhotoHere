@@ -42,7 +42,10 @@ public class Comment {
 	public void setMap(Map map) {
 		this.map = map;
 	}
-
+	
+	public Comment(){
+		
+	}
 	
 	public Comment(Map map, String contents) {
 		this.map = map;

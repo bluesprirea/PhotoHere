@@ -1,6 +1,7 @@
 package org.nhnnext.web;
 
 import java.util.Iterator;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -83,4 +84,18 @@ public class HomeController {
 		fileRepository.delete(id);
 		return "redirect:/";
 	}
+	
+
+    @RequestMapping(value = "/list")
+    public String list(Model model) {
+    		Iterable<Map> boardList;
+    		boardList = fileRepository.findAll();
+    		
+//    		List<Map> copy = (List<Map>)fileRepository.findAll();
+            model.addAttribute("mapmap", boardList);
+
+            return "list";
+    }
+    
+   
 }

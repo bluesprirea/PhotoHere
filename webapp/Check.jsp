@@ -5,13 +5,29 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" media="screen" type="text/css" href="/stylesheets/ForCheck.css" />
 </head>
 <body>
+<div id='wrapper'>
+
 제목 : ${mapmap.title}<br>
 내용 : ${mapmap.contents} <br>
-사진은 여기 있사와요 : <br>
-<img src="/images/${mapmap.filename}"/> <br>
-${board.image}
-<a href=/photo/Correct/${mapmap.id}> 다시 올리기 </a> <br>
+사진은 여기 있사와요 : ${mapmap.filename}<br>
+<img src="/images/${mapmap.filename}"> <br>
+<p>댓글달기</p>
+</form><br>
+<div id="comments">
+<form action="/photo/comment/${mapmap.id}" method="post">
+
+      <input type="text" placeholder="댓글 적어." name="contents">
+      <!-- <textarea rows="1" cols="30" name="attachComment"></textarea> -->
+                <input type="submit" value="submit">
+        </form>
+        <br>
+</div>
+<a href=/photo/Correct/${mapmap.id}> 수정하기 </a> <br>
+<a href=/> Back to the Homepage </a>
+</form>
+</div>
 </body>
 </html>
