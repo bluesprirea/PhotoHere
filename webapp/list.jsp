@@ -16,6 +16,7 @@
 		countComments();
 		console.log('loading over.');
 		registerEvents();
+		
 	}
 	function countComments() {
 		var commentList = document.querySelectorAll('.comment');
@@ -24,12 +25,12 @@
 			var currentNode = commentList[i];
 			var ListCount = currentNode.querySelectorAll('span').length;
 			console.log(ListCount);
-			commentList1[i].insertAdjacentHTML('afterbegin', '댓글은 '+ ListCount+'개야.');
+			commentList1[i].insertAdjacentHTML('afterbegin', '댓글은 ' + ListCount
+					+ '개야.');
 		}
 	}
 	function registerEvents() {
 		var element = document.getElementsByClassName('clickable');
-		
 		for ( var i = 0; i < element.length; i++) {
 			element[i].addEventListener('click', showDDMenu, false);
 		}
@@ -41,23 +42,32 @@
 		}
 		
 	} */
-	function showDDMenu(obj) {
-		var element1 = document.getElementsByClassName('comment');
-		for(var i=0; i<element1.length;i++){
-	        if (element1[i].nextSibling.style.display == 'none') {
-	        	element1[i].nextSibling.style.display = 'block';
-	        }
-	        else {
-	        	element1[i].nextSibling.style.display = 'none';
-	        }
+	function showDDMenu(e) {
+		var element1 = e.target.parentNode.parentNode
+				.querySelectorAll('.comment');
+		
+		//console.log(document.getElementsByClassName('comment')[1]);
+		style = window.getComputedStyle(element1[0]);
+		display = style.getPropertyValue('display');
+		console.log(window.onload);
+
+		if (display == 'none') {
+			element1[0].style.display = 'block';
+		} else {
+			element1[0].style.display = 'none';
 		}
-    }
+		
+		e.returnValue = false;
+		/* window.open('/photo/list','_self', 'scrollbars=yes') */
+	}
+	
+	
 	
 	window.onload = initPage;
 </script>
 </head>
-<body>
-<body>
+
+<body >
 	<!-- 글쓰기 form -->
 	<header>
 	<h1>Here's a list.</h1>
@@ -73,12 +83,11 @@
 		</form>
 	</div>
 	<hr>
-	<div class='wrapper'>
-		<c:forEach items="${mapmap}" var="board">
-		
-			제목: <a href="/photo/${board.id}">${board.title}</a>
-			<br>
-			
+
+	<c:forEach items="${mapmap}" var="board">
+		<div class='wrapper'>
+			제목: <a href="/photo/${board.id}">${board.title}</a> <br>
+
 			<c:if test="${not empty board.filename}">
 이미지 :<br>
 				<img src="/images/${board.filename}" />
@@ -113,7 +122,7 @@
 
 					<br>
 			</div>
-	</div>
+		</div>
 	</c:forEach>
 	<a href="/photo/upload"><button>글쓰기 화면으로 가기</button></a>
 	<br />
