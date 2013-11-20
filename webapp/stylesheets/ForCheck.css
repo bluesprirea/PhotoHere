@@ -22,18 +22,18 @@
 	margin-top :100px;
 	}
 	
-	div#formArea {
+	div#wrapper {
 	padding-top : 100px;
 	text-align : center;
 	}
 	
-	#formArea textarea {
+	#wrapper textarea {
 		width :600px;
 		margin : 20px 0px;
 		resize : none;
 	}
 	
-	#formArea input[type=submit] {
+	#wrapper input[type=submit] {
 		margin-top : 20px;
 		padding : 5px;
 		background : #9cf;
@@ -45,11 +45,11 @@
 		-webkit-border-radius : 10px;
 	}
 	
-	#formArea input[type=text]{
+	#wrapper input[type=text]{
 		height : 40px;
 	}
 	
-	#formArea input[type=reset] {
+	#wrapper input[type=reset] {
 		margin-top : 20px;
 		padding : 5px;
 		background : #9cf;
@@ -61,7 +61,7 @@
 		-webkit-border-radius : 10px;
 	}
 	
-	#formArea input[type=file] {
+	#wrapper input[type=file] {
 		margin-top : 20px;
 		padding : 5px;
 		background : #9cf;

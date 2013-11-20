@@ -47,15 +47,15 @@
 				left:0px;
 				z-index:-1;
 			}
-			h1{
+			.bg_img h1{
+				font-family : Raleway,Helvetica Neue,Helvetica,Arial,sans-serif;
 				font-size:75px;
-				text-align:right;
+				text-align:center;
 				position:absolute;
 				right:40px;
 				top:20px;
 				font-weight:normal;
-				/*text-shadow:  0 0 3px #0096ff, 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #0096ff, 0 0 70px #0096ff, 0 0 80px #0096ff, 0 0 100px #0096ff, 0 0 150px #0096ff;
-			*/}
+				}
 			h1 span{
 				display:block;
 				font-size:15px;
@@ -74,48 +74,8 @@
 <body>
 
 
-<!-- 	<img src=http://fc02.deviantart.net/fs71/f/2011/007/3/9/the_view_from_the_farm_by_theartist_guy-d36oci3.jpg alt="background" width="relative" height="600px">
-	<header class="fixed-top" role="banner">
-	<div class="navbar-inner">
-		<div class="container">
-			<nav class="nav-collapse" role="navigation">
-				<ul class="nav">
-					<li>
-						<a href="/photo/upload"> Upload </a>
-					</li>
-					<li>
-						<a href="photo/list"> list </a>
-					</li>
-				</ul>
-				<ul class="hidden">
-					<li>
-						<a href="/login/form" class="login" data-target="#login-model" data-toggle="modal" role="button"> Login </a>
-						<a href="/logout" class="login" data-target="#login-model" data-toggle="modal" role="button"> LogOut </a>
-						<a href="/join/form" class="login" data-target="#login-model" data-toggle="modal" role="button"> JoinUs </a>
-				</ul>
-		</div>
-	</div> -->
-	
-	<%-- <a href="/photo/upload"><h1> 사진 올리러 가기 </h1></a><br>
-	<a href="/photo/list"><h1> 사진 보러가기 </h1></a><br>
-	
-	<c:choose>
-		<c:when test="${not empty sessionScope.userId}">
-		        <a href="/logout">로그아웃</a>
-		        <br>
-		</c:when>
-		
-		<c:otherwise>
-		        <a href="/login/form">로그인</a>
-		        <br>
-		</c:otherwise>
-
-
-	</c:choose>
-
-	<a href="/join/form">회원 가입하기</a> --%>
 	<div class="bg_img"><img src="/images/un.jpg">
-			<h1>Photo?<span>Come Here With Me!</span></h1>
+			<h1>What the.</h1>
 <!-- 		<h2>PhotoHere.</h2> -->
 
 		<div class="oe_wrapper">
@@ -145,7 +105,7 @@
             </span>
 		</div>
 
-        <!-- The JavaScript -->
+
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script> 
         <script type="text/javascript">
             $(function() {
@@ -165,7 +125,7 @@
 					$this.removeClass('selected').children('div').css('z-index','1');
 				});
 				
-                마우스가 왔을 경우에, hovered된 후에, 색깔이 바뀌도록 만들고, . 
+                /* 마우스가 왔을 경우에, hovered된 후에, 색깔이 바뀌도록 만들고, .  */
                 
                 
 				$oe_menu.bind('mouseenter',function(){ 

@@ -24,7 +24,8 @@ body{/* 바디 부분에 적용시키는 css작*/
 ul.oe_menu{
 	list-style:none;
 	position:relative;
-	margin:250px 0px 0px 350px;
+	margin-left:75px;
+	margin-top:50px;
 	width:560px;
 	float:left;
 	clear:both;

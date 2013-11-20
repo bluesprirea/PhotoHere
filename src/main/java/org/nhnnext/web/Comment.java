@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 @Entity
 public class Comment {
 	@Id
@@ -17,7 +19,9 @@ public class Comment {
 	private String contents;
 	
 	@ManyToOne
+	@JsonIgnore
 	private Map map;
+	
 	
 	public Long getId() {
 		return id;

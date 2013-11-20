@@ -6,8 +6,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" media="screen" type="text/css" href="/stylesheets/ForCheck.css" />
+<style>
+	
+</style>
 </head>
 <body>
+<center>
 <div id='wrapper'>
 
 제목 : ${mapmap.title}<br>
@@ -17,7 +21,7 @@
 <p>댓글달기</p>
 </form><br>
 <div id="comments">
-<form action="/photo/comment/${mapmap.id}" method="post">
+<form action="/photo/${mapmap.id}/comment" method="post">
 
       <input type="text" placeholder="댓글 적어." name="contents">
       <!-- <textarea rows="1" cols="30" name="attachComment"></textarea> -->
@@ -29,5 +33,6 @@
 <a href=/> Back to the Homepage </a>
 </form>
 </div>
+</center>
 </body>
 </html>

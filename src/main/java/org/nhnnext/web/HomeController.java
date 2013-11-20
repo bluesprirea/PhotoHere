@@ -8,6 +8,8 @@ import javax.servlet.http.HttpSession;
 import org.nhnnext.repository.CommentRepository;
 import org.nhnnext.repository.FileRepository;
 import org.nhnnext.support.FileUploader;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +21,9 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 @RequestMapping("/photo")
 public class HomeController {
+	
+	private static final Logger log = LoggerFactory.getLogger(HomeController.class);
+	
 	@Autowired
 	private FileRepository fileRepository;
 
@@ -41,6 +46,7 @@ public class HomeController {
 
 	@RequestMapping(value = "", method = RequestMethod.POST)
 	public String uploaded(Map map, MultipartFile file) {
+		log.debug("photo : {}", map);
 		String fileName = FileUploader.upload(file);
 		map.setFilename(fileName);
 
@@ -66,7 +72,7 @@ public class HomeController {
 		return "Check";
 	}
 
-	@RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String delete(@PathVariable Long id) {
 		Iterable iter = commentRepository.findAll();
 		Iterator it = iter.iterator();
@@ -82,7 +88,7 @@ public class HomeController {
 		}
 
 		fileRepository.delete(id);
-		return "redirect:/";
+		return "redirect:/photo";
 	}
 	
 
