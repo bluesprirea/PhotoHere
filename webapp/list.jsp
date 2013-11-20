@@ -21,6 +21,10 @@
 		for (var j=0; j < formList.length; j++){
 			formList[j].addEventListener('click', writeComments, false);
 		}
+		var Button = document.querySelectorAll('.commentWrite input[name="delete"]');
+		for(var q=0; q < Button.length; q++){
+			Button[q].addEventListener('click', deletePhoto, false);
+		}
 		//html위에서 부터 읽음. 로딩될때까지 기다린다. 맨 밑의 코드, 화면이 로딩이 안된 상태에서 로드하니까 안됨. 그래서 initpage에다가 넣음.
 	}
 	function countComments() {
@@ -81,6 +85,8 @@
 		request.onreadystatechange=function(){
 			
 			if(request.readyState==4 && request.status==200){
+				
+				
 				var obj = JSON.parse(request.responseText);
 				console.log(obj);
 				var eleCommentList = eleForm.parentNode.previousElementSibling;
@@ -89,8 +95,36 @@
 		        
 			};
 		};
-		request.send(oFormData);
+	
+	request.send(oFormData);
 	}
+	function deletePhoto(b){
+		b.preventDefault();
+		var target = b.currentTarget.form;
+		console.log(target);
+		var sID = target.id.value;
+		var url = "/photo/delete/"+sID+"/photo.json"
+		var request = new XMLHttpRequest();
+		request.open("POST", url, true);
+		request.send();
+		
+		
+		
+		request.onreadystatechange=function(b){
+			if(request.readyState==4 && request.status==200){
+				console.log(target);
+				var delForm = target.parentNode.parentNode;
+				console.log(delForm);
+				
+				var deldelForm = delForm.parentNode;
+				deldelForm.removeChild(delForm);
+				
+				
+			};
+		};
+	}
+
+
 	
 	window.onload = initPage;
 </script>
@@ -117,10 +151,10 @@
 	<center>
 	<c:forEach items="${mapmap}" var="board">
 		<div class='wrapper'>
-			제목: <a href="/photo/${board.id}">${board.title}</a> <br>
+			제 목: <a href="/photo/${board.id}">${board.title}</a> <br>
 
 			<c:if test="${not empty board.filename}">
-이미지 :<br>
+<br>
 				<img src="/images/${board.filename}" />
 				<br>
 			</c:if>
@@ -147,10 +181,11 @@
 					<input type="hidden" name="id" value="${board.id}"><br>
 					<input type="text" placeholder="댓글 적어." name="contents"> <input
 						type="submit" value="submit" name="submit">
-					<%-- <form action="/photo/delete/${board.id}" method="post">
-						<input type="submit" name='id' value="사진삭제">
-					</form> --%>
-					<a href="/photo/delete/${board.id}">delete it.</a>
+					<form action="/photo/delete/${board.id}" id="${board.id} method="post">
+						<input type="submit" name='delete' value="사진삭제">
+					</form>
+					<%-- <a href="/photo/delete/${board.id}">delete it.</a> --%>
+					<!-- <button type="button" name="delete">삭제</button> -->
 
 					<br>
 			</div>

@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
@@ -72,7 +73,7 @@ public class HomeController {
 		return "Check";
 	}
 
-	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
 	public String delete(@PathVariable Long id) {
 		Iterable iter = commentRepository.findAll();
 		Iterator it = iter.iterator();
@@ -103,5 +104,25 @@ public class HomeController {
             return "list";
     }
     
+    @RequestMapping(value="/delete/{id}/photo.json", method = RequestMethod.POST)
+	public Object deletePhoto(@PathVariable Long id){
+    	Iterable iter = commentRepository.findAll();
+		Iterator it = iter.iterator();
+
+		while (it.hasNext()) {
+			Comment attcom = (Comment) it.next();
+			Long boardNum = attcom.getMap().getId();
+
+			if (boardNum.equals(id)) {
+				commentRepository.delete(attcom.getId());
+				;
+			}
+		}
+		
+		fileRepository.delete(id);
+		
+		return null;
+		
+	}
    
 }

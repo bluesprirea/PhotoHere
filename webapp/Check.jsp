@@ -7,13 +7,23 @@
 <title>Insert title here</title>
 <link rel="stylesheet" media="screen" type="text/css" href="/stylesheets/ForCheck.css" />
 <style>
-	
+	a{
+		margin-top : 20px;
+		padding : 5px;
+		background : #9cf;
+		border : none;
+		font-size : 14px;
+		color : white;
+		border-radius : 10px;
+		-moz-border-radius : 10px;
+		-webkit-border-radius : 10px;
+	}
 </style>
 </head>
 <body>
 <center>
 <div id='wrapper'>
-
+<h1>게시물은 다음과 같이 달렸어.</h1><br><br>
 제목 : ${mapmap.title}<br>
 내용 : ${mapmap.contents} <br>
 사진은 여기 있사와요 : ${mapmap.filename}<br>
@@ -29,7 +39,8 @@
         </form>
         <br>
 </div>
-<a href=/photo/Correct/${mapmap.id}> 수정하기 </a> <br>
+<a href=/photo/Correct/${mapmap.id}> 수정하기 </a> <br><br>
+<a href=/photo/list>목록 보러가기 </a> <br><br>
 <a href=/> Back to the Homepage </a>
 </form>
 </div>
